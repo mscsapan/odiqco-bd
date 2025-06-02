@@ -1287,7 +1287,7 @@ class _ProductDetailsState extends State<ProductDetails>
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return ProductReviews(id: _productDetails!.id);
+                              return ProductReviews(id: _productDetails?.id);
                             })).then((value) {
                               onPopped(value);
                             });

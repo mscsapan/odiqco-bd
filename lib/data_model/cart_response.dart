@@ -107,7 +107,7 @@ class CartItem {
         userId: json["user_id"],
         productId: json["product_id"],
         productName: json["product_name"],
-        auctionProduct: json["auction_product"],
+        auctionProduct: json["auction_product"] != null? int.parse(json["auction_product"].toString()) : 0,
         productThumbnailImage: json["product_thumbnail_image"],
         variation: json["variation"],
         price: json["price"],

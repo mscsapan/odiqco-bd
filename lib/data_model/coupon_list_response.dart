@@ -96,8 +96,8 @@ class CouponData {
             ? null
             : CouponDiscountDetails.fromJson(json["coupon_discount_details"]),
         discountType: json["discount_type"],
-        startDate: json["start_date"],
-        endDate: json["end_date"],
+        startDate: json["start_date"] != null? int.parse(json["start_date"]) : 0,
+        endDate: json["end_date"] != null? int.parse(json["end_date"]) : 0,
       );
 
   Map<String, dynamic> toJson() => {
