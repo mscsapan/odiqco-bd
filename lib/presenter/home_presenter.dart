@@ -76,6 +76,8 @@ class HomePresenter extends ChangeNotifier {
     try {
       final banners = await SlidersRepository().fetchBanners();
       _banners = banners;
+     final item = _banners.map((e)=>e.banner).toList();
+      //debugPrint('all-banners $item');
       notifyListeners();
     } catch (e) {
       print('Error loading banners: $e');

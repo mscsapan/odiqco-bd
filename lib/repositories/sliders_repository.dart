@@ -5,6 +5,7 @@ import 'package:active_ecommerce_cms_demo_app/data_model/flash_deal_response.dar
 import 'package:active_ecommerce_cms_demo_app/data_model/slider_response.dart';
 import 'package:active_ecommerce_cms_demo_app/helpers/shared_value_helper.dart';
 import 'package:active_ecommerce_cms_demo_app/repositories/api-request.dart';
+import 'package:flutter/material.dart';
 
 class SlidersRepository {
   Future<SliderResponse> getSliders() async {
@@ -73,9 +74,11 @@ class SlidersRepository {
         "App-Language": app_language.$!,
       },
     );
+    // debugPrint('Fetching banners from URL $url');
 
     if (response.statusCode == 200) {
       final jsonData = jsonDecode(response.body);
+      // debugPrint('flash-response $jsonData');
       if (jsonData['data'] != null) {
         return (jsonData['data'] as List)
             .map((banner) => FlashDealResponseDatum.fromJson(banner))

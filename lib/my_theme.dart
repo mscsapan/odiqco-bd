@@ -5,12 +5,11 @@ ThemeData lightMode = ThemeData();
 class MyTheme {
   /*configurable colors stars*/
   static Color mainColor = Color(0xffF2F1F6);
-  static const Color accent_color = Color(0xffE62E04);
-  static const Color accent_color_shadow =
-      Color.fromRGBO(229, 65, 28, .40); // this color is a dropshadow of
+  static const Color accent_color = Color(0xFF33B7B1);
+  // static const Color accent_color = Color(0xffE62E04);
+  static const Color accent_color_shadow = Color.fromRGBO(229, 65, 28, .40); // this color is a dropshadow of
   static Color soft_accent_color = Color.fromRGBO(254, 234, 209, 1);
-  static Color splash_screen_color = Color.fromRGBO(
-      230, 46, 4, 1); // if not sure , use the same color as accent color
+  static Color splash_screen_color = Color.fromRGBO(230, 46, 4, 1); // if not sure , use the same color as accent color
   /*configurable colors ends*/
   /*If you are not a developer, do not change the bottom colors*/
   static const Color white = Color.fromRGBO(255, 255, 255, 1);

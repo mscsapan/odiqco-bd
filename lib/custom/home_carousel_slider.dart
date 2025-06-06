@@ -16,12 +16,12 @@ class HomeCarouselSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (homeData!.isCarouselInitial && homeData!.carouselImageList.isEmpty) {
+    if ((homeData?.isCarouselInitial??false) && (homeData?.carouselImageList.isEmpty??false)) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: ShimmerHelper().buildBasicShimmer(height: 120),
       );
-    } else if (homeData!.carouselImageList.isNotEmpty) {
+    } else if (homeData?.carouselImageList.isNotEmpty??false) {
       return Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class HomeCarouselSlider extends StatelessWidget {
               homeData!.incrementCurrentSlider(index);
             },
           ),
-          items: homeData!.carouselImageList.map((i) {
+          items: homeData?.carouselImageList.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return SizedBox(
@@ -69,8 +69,7 @@ class HomeCarouselSlider extends StatelessWidget {
           }).toList(),
         ),
       );
-    } else if (!homeData!.isCarouselInitial &&
-        homeData!.carouselImageList.isEmpty) {
+    } else if (!(homeData?.isCarouselInitial??false) && (homeData?.carouselImageList.isEmpty??false)) {
       return SizedBox(
         height: 100,
         child: Center(

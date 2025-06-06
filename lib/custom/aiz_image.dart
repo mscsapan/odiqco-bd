@@ -17,37 +17,43 @@ class AIZImage {
       // } ,
       // progressIndicatorBuilder: (context, url, downloadProgress) =>
       //     CircularProgressIndicator(value: downloadProgress.progress),
-      errorWidget: (context, url, error) => Image.asset(
-        "assets/placeholder_rectangle.png",
-        fit: BoxFit.cover,
-      ),
+      errorWidget:
+          (context, url, error) => Image.asset(
+            "assets/placeholder_rectangle.png",
+            fit: BoxFit.cover,
+          ),
     );
   }
 
-  static Widget radiusImage(String? url, double radius,
-      {BoxFit fit = BoxFit.cover, bool isShadow = true}) {
+  static Widget radiusImage(
+    String? url,
+    double radius, {
+    BoxFit fit = BoxFit.cover,
+    bool isShadow = true,
+  }) {
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: CachedNetworkImageProvider(
-                url ?? "",
-              ),
-              fit: fit,
-              onError: (obj, e) {
-                //  return AssetImage("assets/placeholder_rectangle.png");
-              }),
-          borderRadius: BorderRadius.circular(radius),
-          color: Colors.white,
-          boxShadow: isShadow
-              ? [
+        image: DecorationImage(
+          image: CachedNetworkImageProvider(url ?? ""),
+          fit: fit,
+          onError: (obj, e) {
+            //  return AssetImage("assets/placeholder_rectangle.png");
+          },
+        ),
+        borderRadius: BorderRadius.circular(radius),
+        color: Colors.white,
+        boxShadow:
+            isShadow
+                ? [
                   BoxShadow(
                     color: Colors.black.withOpacity(.08),
                     blurRadius: 20,
                     spreadRadius: 0.0,
                     offset: Offset(0.0, 10.0), // shadow direction: bottom right
-                  )
+                  ),
                 ]
-              : []),
+                : [],
+      ),
     );
   }
 }

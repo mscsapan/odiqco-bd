@@ -19,6 +19,7 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
+
   Future<String?> getSharedValueHelperData() async {
     access_token.load().whenComplete(() {
       AuthHelper().fetch_and_set();
@@ -39,16 +40,19 @@ class _IndexState extends State<Index> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
+    goToNext();
+
+  }
+
+  void goToNext(){
     getSharedValueHelperData().then((value) {
       Future.delayed(Duration(seconds: 3)).then((value) {
         SystemConfig.isShownSplashScreed = true;
-        Provider.of<LocaleProvider>(context, listen: false)
-            .setLocale(app_mobile_language.$!);
+        Provider.of<LocaleProvider>(context, listen: false).setLocale(app_mobile_language.$!);
         setState(() {});
       });
     });
-    super.initState();
   }
 
   @override
