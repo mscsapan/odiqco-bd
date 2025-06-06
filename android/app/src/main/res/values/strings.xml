@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">ActiveEcommerce</string>
+    <string name="app_name">Odiqco</string>
 
     <!-- Replace with your actual Facebook App ID -->
-    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
+    <string name="facebook_app_id">1730698957535121</string>
 
     <!-- Replace with your actual Facebook Client Token -->
-    <string name="facebook_client_token">YOUR_FACEBOOK_CLIENT_TOKEN</string>
+    <string name="facebook_client_token">ba02508f3b113e540a141f2f34</string>
 
     <!-- Replace "fb" with your Facebook App ID -->
-    <string name="fb_login_protocol_scheme">fbYOUR_FACEBOOK_APP_ID</string>
+    <string name="fb_login_protocol_scheme">fb1730698957535121</string>
 
     <string name="flutter_downloader_notification_started">Download started</string>
     <string name="flutter_downloader_notification_in_progress">Download in progress</string>

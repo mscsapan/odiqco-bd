@@ -98,7 +98,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
       widget.name ?? 'No name',
       textAlign: TextAlign.left,
       overflow: TextOverflow.ellipsis,
-      maxLines: 2,
+      maxLines: 1,
       style: TextStyle(
         color: MyTheme.dark_font_grey,
         fontSize: 13,

@@ -49,13 +49,13 @@ class SellerInfo {
   String? shopLogo;
 
   factory SellerInfo.fromJson(Map<String, dynamic> json) => SellerInfo(
-    shopId: json["shop_id"],
-    shopSlug: json["shop_slug"],
-    shopName: json["shop_name"],
-    shopUrl: json["shop_url"],
-    shopRating: json["shop_rating"],
-    shopNumOfReviews: json["shop_num_of_reviews"],
-    shopLogo: json["shop_logo"],
+    shopId: json["shop_id"] != null? int.parse(json["shop_id"].toString()):0,
+    shopSlug: json["shop_slug"] ?? '',
+    shopName: json["shop_name"] ?? '',
+    shopUrl: json["shop_url"] ?? '',
+    shopRating: json["shop_rating"] ?? 0.0,
+    shopNumOfReviews: json["shop_num_of_reviews"] != null? int.parse(json["shop_num_of_reviews"].toString()):0,
+    shopLogo: json["shop_logo"] ?? '',
   );
 
   Map<String, dynamic> toJson() => {

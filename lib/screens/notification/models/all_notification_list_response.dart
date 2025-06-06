@@ -97,12 +97,12 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        link: json["link"],
-        orderId: json["order_id"],
-        orderCode: json["order_code"],
-        userId: json["user_id"],
-        sellerId: json["seller_id"],
-        status: json["status"],
+        link: json["link"]??'',
+        orderId: json["order_id"] != null ? int.parse(json["order_id"].toString()) : 0,
+        orderCode: json["order_code"]??'',
+        userId: json["user_id"] != null ? int.parse(json["user_id"].toString()):0,
+        sellerId: json["seller_id"] != null ? int.parse(json["seller_id"].toString()):0,
+        status: json["status"]??'',
       );
 
   Map<String, dynamic> toJson() => {

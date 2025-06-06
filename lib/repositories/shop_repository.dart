@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:active_ecommerce_cms_demo_app/app_config.dart';
 import 'package:active_ecommerce_cms_demo_app/data_model/common_response.dart';
 import 'package:active_ecommerce_cms_demo_app/data_model/followed_sellers_response.dart';
@@ -7,6 +9,7 @@ import 'package:active_ecommerce_cms_demo_app/data_model/shop_details_response.d
 import 'package:active_ecommerce_cms_demo_app/data_model/product_mini_response.dart';
 import 'package:active_ecommerce_cms_demo_app/repositories/api-request.dart';
 import 'package:active_ecommerce_cms_demo_app/helpers/shared_value_helper.dart';
+import 'package:flutter/material.dart';
 
 class ShopRepository {
   Future<dynamic> getShops({name = "", page = 1}) async {
@@ -24,13 +27,14 @@ class ShopRepository {
 
   Future<ShopDetailsResponse> getShopInfo(slug) async {
     String url = ("${AppConfig.BASE_URL}/shops/details/$slug");
+    debugPrint('seller-detail $url');
     final response = await ApiRequest.get(
       url: url,
       headers: {
         "App-Language": app_language.$!,
       },
     );
-    print("Shop information${response.body}");
+    log("Shop information ${response.body}");
 
     return shopDetailsResponseFromJson(response.body);
   }

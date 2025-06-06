@@ -116,8 +116,7 @@ class _OtpState extends State<Otp> {
                     child: SizedBox(
                       width: 75,
                       height: 75,
-                      child: Image.asset(
-                          'assets/login_registration_form_logo.png'),
+                      child: Image.asset('assets/launcher_icon.png'),
                     ),
                   ),
                   SizedBox(

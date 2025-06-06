@@ -38,7 +38,7 @@ class _TopSellingProductsCardState extends State<TopSellingProductsCard> {
         }));
       },
       child: Container(
-        height: 90,
+        height: 94,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -52,7 +52,7 @@ class _TopSellingProductsCardState extends State<TopSellingProductsCard> {
             Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
           SizedBox(
               width: 90,
-              height: 90,
+              height: 94,
               child: ClipRRect(
                   borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(6), right: Radius.zero),
@@ -66,25 +66,22 @@ class _TopSellingProductsCardState extends State<TopSellingProductsCard> {
               padding:
                   EdgeInsets.only(top: 14, left: 14, right: 34, bottom: 14),
               //width: 240,
-              height: 90,
+              height: 94,
               //color: Colors.red,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    //color:Colors.blue,
-                    child: Text(
-                      widget.name!,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      style: TextStyle(
-                          color: Color(0xff6B7377),
-                          fontFamily: 'Public Sans',
-                          fontSize: 12,
-                          height: 1.6,
-                          fontWeight: FontWeight.normal),
-                    ),
+                  Text(
+                    widget.name??'',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                        color: Color(0xff6B7377),
+                        fontFamily: 'Public Sans',
+                        fontSize: 12,
+                        height: 1.6,
+                        fontWeight: FontWeight.normal),
                   ),
                   Container(
                     //color: Colors.green,

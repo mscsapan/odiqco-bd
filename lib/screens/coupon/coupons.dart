@@ -167,7 +167,7 @@ class _CouponsState extends State<Coupons> {
               borderRadius: BorderRadius.all(Radius.circular(24.0)),
             ),
             padding: EdgeInsets.only(left: 37, right: 25, top: 22, bottom: 1),
-            height: 182,
+            // height: 182,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

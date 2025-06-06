@@ -140,6 +140,7 @@ class _BlogListScreenState extends State<BlogListScreen> {
           } else {
             return Consumer<BlogProvider>(
                 builder: (context, blogProvider, child) {
+            if(blogProvider.blogs.isNotEmpty){
               return MasonryGridView.count(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 crossAxisCount: 2,
@@ -190,7 +191,7 @@ class _BlogListScreenState extends State<BlogListScreen> {
                             Container(
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(10, 113, 10, 18),
+                                const EdgeInsets.fromLTRB(10, 113, 10, 18),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -232,7 +233,11 @@ class _BlogListScreenState extends State<BlogListScreen> {
                   );
                 },
               );
-            });
+            } else {
+              return Center(child: Text('No blog found',style: TextStyle(fontSize: 20.0)));
+            }
+                },
+            );
           }
         });
   }

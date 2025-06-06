@@ -14,6 +14,8 @@ import '../../app_config.dart';
 import '../../helpers/shared_value_helper.dart';
 import '../profile.dart';
 
+
+// ignore: must_be_immutable
 class BkashScreen extends StatefulWidget {
   double? amount;
   String payment_type;
@@ -48,18 +50,19 @@ class _BkashScreenState extends State<BkashScreen> {
     // TODO: implement initState
     super.initState();
     if (widget.payment_type == "cart_payment") {
+      debugPrint('bKash cart_payment');
       createOrder();
     }
 
     if (widget.payment_type != "cart_payment") {
       // on cart payment need proper order id
+      debugPrint('bKash-not cart_payment');
       bkash();
     }
   }
 
   createOrder() async {
-    var orderCreateResponse = await PaymentRepository()
-        .getOrderCreateResponse(widget.payment_method_key);
+    var orderCreateResponse = await PaymentRepository().getOrderCreateResponse(widget.payment_method_key);
 
     if (orderCreateResponse.result == false) {
       ToastComponent.showDialog(
@@ -111,9 +114,8 @@ class _BkashScreenState extends State<BkashScreen> {
   // }
 
   bkash() {
-    _initial_url =
-        ("${AppConfig.BASE_URL}/bkash/begin?payment_type=${widget.payment_type}&combined_order_id=$_combined_order_id&amount=${widget.amount}&user_id=${user_id.$}&package_id=${widget.package_id}&order_id=${widget.orderId}");
-
+    _initial_url = ("${AppConfig.BASE_URL}/bkash/begin?payment_type=${widget.payment_type}&combined_order_id=$_combined_order_id&amount=${widget.amount}&user_id=${user_id.$}&package_id=${widget.package_id}&order_id=${widget.orderId}");
+debugPrint('bkash-payment-page-url $_initial_url');
     _initial_url_fetched = true;
     setState(() {});
 
@@ -268,16 +270,12 @@ class _BkashScreenState extends State<BkashScreen> {
     if (_order_init == false &&
         _combined_order_id == 0 &&
         widget.payment_type == "cart_payment") {
-      return Container(
-        child: Center(
-          child: Text(AppLocalizations.of(context)!.creating_order),
-        ),
+      return Center(
+        child: Text(AppLocalizations.of(context)!.creating_order),
       );
     } else if (_initial_url_fetched == false) {
-      return Container(
-        child: Center(
-          child: Text(AppLocalizations.of(context)!.fetching_bkash_url),
-        ),
+      return Center(
+        child: Text(AppLocalizations.of(context)!.fetching_bkash_url),
       );
     } else {
       return SingleChildScrollView(
