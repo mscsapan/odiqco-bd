@@ -3,27 +3,31 @@ import 'package:active_ecommerce_cms_demo_app/screens/seller_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class ShopSquareCard extends StatefulWidget {
+import '../custom/device_info.dart';
+
+
+class ShopSquareCard extends StatelessWidget {
   final int? id;
   final String? image;
   final String shopSlug;
   final String? name;
   final double? stars;
+  final double ? width;
+  final double ? imageHeight;
+  final EdgeInsets ? margin;
 
   const ShopSquareCard({
     super.key,
     this.id,
     this.image,
     this.name,
+    this.imageHeight,
+    this.width,
+    this.margin,
     this.stars,
     required this.shopSlug,
   });
 
-  @override
-  _ShopSquareCardState createState() => _ShopSquareCardState();
-}
-
-class _ShopSquareCardState extends State<ShopSquareCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -31,11 +35,14 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SellerDetails(slug: widget.shopSlug),
+            builder: (context) => SellerDetails(slug: shopSlug),
           ),
         );
       },
       child: Container(
+        width: width ?? DeviceInfo.mediaQuery(context).width,
+        // width: width ?? DeviceInfo.mediaQuery(context).width * 0.5,
+        margin: margin ?? DeviceInfo.all(),
         decoration: BoxDecoration(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,19 +61,19 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
-                  height: 5,
+                    height: 5
                 ),
                 _buildName(),
                 SizedBox(
-                  height: 5,
+                    height: 5
                 ),
                 _buildRating(),
                 SizedBox(
-                  height: 8,
+                    height: 8
                 ),
                 _buildVisitStoreButton(),
                 SizedBox(
-                  height: 2,
+                    height: 2
                 )
               ],
             )
@@ -85,7 +92,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
           child: FadeInImage.assetNetwork(
             placeholder: 'assets/placeholder.png',
-            image: widget.image ?? 'assets/placeholder.png',
+            image: image ?? 'assets/placeholder.png',
             fit: BoxFit.cover,
           ),
         ),
@@ -95,7 +102,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
 
   Widget _buildName() {
     return Text(
-      widget.name ?? 'No name',
+      name ?? 'No name',
       textAlign: TextAlign.left,
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
@@ -113,7 +120,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
       height: 15,
       child: RatingBar(
         ignoreGestures: true,
-        initialRating: widget.stars ?? 0.0,
+        initialRating: stars ?? 0.0,
         maxRating: 5,
         direction: Axis.horizontal,
         itemSize: 15.0,
@@ -122,7 +129,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
           full: const Icon(Icons.star, color: Colors.amber),
           half: const Icon(Icons.star_half),
           empty:
-              const Icon(Icons.star, color: Color.fromRGBO(224, 224, 225, 1)),
+          const Icon(Icons.star, color: Color.fromRGBO(224, 224, 225, 1)),
         ),
         onRatingUpdate: (newValue) {},
       ),

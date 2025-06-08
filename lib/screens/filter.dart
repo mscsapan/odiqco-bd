@@ -19,6 +19,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:one_context/one_context.dart';
 
+import '../custom/device_info.dart';
 import '../repositories/search_repository.dart';
 
 class WhichFilter {
@@ -1241,15 +1242,14 @@ class _FilterState extends State<Filter> {
     }
   }
 
-  Container buildShopList() {
-    return Container(
-      child: Column(
-        children: [
-          Expanded(
-            child: buildShopScrollableList(),
-          )
-        ],
-      ),
+  Widget buildShopList() {
+    return Column(
+      children: [
+        DeviceInfo.verticalSpace(20.0),
+        Expanded(
+          child: buildShopScrollableList(),
+        )
+      ],
     );
   }
 
@@ -1275,31 +1275,52 @@ class _FilterState extends State<Filter> {
                       MediaQuery.of(context).viewPadding.top > 40 ? 140 : 135
                   //MediaQuery.of(context).viewPadding.top is the statusbar height, with a notch phone it results almost 50, without a notch it shows 24.0.For safety we have checked if its greater than thirty
                   ),
-              GridView.builder(
-                // 2
-                //addAutomaticKeepAlives: true,
-                itemCount: _shopList.length,
-                controller: _scrollController,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 14,
-                    mainAxisSpacing: 14,
-                    childAspectRatio: 0.7),
-                padding:
-                    EdgeInsets.only(top: 20, bottom: 10, left: 18, right: 18),
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  // 3
-                  return ShopSquareCard(
-                    id: _shopList[index].id,
-                    shopSlug: _shopList[index].slug,
-                    image: _shopList[index].logo,
-                    name: _shopList[index].name,
-                    stars: double.parse(_shopList[index].rating.toString()),
-                  );
-                },
-              )
+              Wrap(
+                runSpacing: 10.0,
+                spacing: 6.0,
+                alignment:  WrapAlignment.center,
+                runAlignment: WrapAlignment.center,
+                children: List.generate(_shopList.length, (index) {
+                  final service = _shopList[index];
+                      return ShopSquareCard(
+                        id: _shopList[index].id,
+                        shopSlug: _shopList[index].slug,
+                        image: _shopList[index].logo,
+                        name: _shopList[index].name,
+                        stars: double.parse(_shopList[index].rating.toString()),
+                        width: DeviceInfo.mediaQuery(context).width * 0.44,
+                        margin: DeviceInfo.symmetric(h: 6.0),
+                      );
+                  // return SingleCategoryView(
+                  //   item: service,
+                  //   width: Utils.mediaQuery(context).width * 0.46,
+                  //   imageHeight: Utils.mediaQuery(context).height * 0.14,
+                  // );
+                }),
+              ),
+              // GridView.builder(
+              //   // 2
+              //   //addAutomaticKeepAlives: true,
+              //   itemCount: _shopList.length,
+              //   controller: _scrollController,
+              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 2,
+              //       crossAxisSpacing: 14,
+              //       mainAxisSpacing: 14,
+              //       childAspectRatio: 0.7),
+              //   padding: EdgeInsets.only(top: 20, bottom: 10, left: 18, right: 18),
+              //   physics: NeverScrollableScrollPhysics(),
+              //   shrinkWrap: true,
+              //   itemBuilder: (context, index) {
+              //     return ShopSquareCard(
+              //       id: _shopList[index].id,
+              //       shopSlug: _shopList[index].slug,
+              //       image: _shopList[index].logo,
+              //       name: _shopList[index].name,
+              //       stars: double.parse(_shopList[index].rating.toString()),
+              //     );
+              //   },
+              // )
             ],
           ),
         ),

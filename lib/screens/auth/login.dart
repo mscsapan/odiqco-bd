@@ -410,7 +410,7 @@ class _LoginState extends State<Login> {
                           controller: _emailController,
                           autofocus: false,
                           decoration: InputDecorations.buildInputDecoration_1(
-                              hint_text: "johndoe@example.com"),
+                              hint_text: "your email address"),
                         ),
                       ),
                       otp_addon_installed.$
@@ -444,13 +444,13 @@ class _LoginState extends State<Login> {
                         child: CustomInternationalPhoneNumberInput(
                           countries: countries_code,
                           onInputChanged: (PhoneNumber number) {
-                            print(number.phoneNumber);
+                            //print(number.phoneNumber);
                             setState(() {
                               _phone = number.phoneNumber;
                             });
                           },
                           onInputValidated: (bool value) {
-                            print(value);
+                            //print(value);
                           },
                           selectorConfig: SelectorConfig(
                             selectorType: PhoneInputSelectorType.DIALOG,
@@ -529,7 +529,9 @@ class _LoginState extends State<Login> {
                         style: TextStyle(
                             color: MyTheme.accent_color,
                             fontStyle: FontStyle.italic,
-                            decoration: TextDecoration.underline),
+                            decoration: TextDecoration.underline,
+                        decorationColor: MyTheme.accent_color,
+                        ),
                       ),
                     )
                   ],

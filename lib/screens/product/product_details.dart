@@ -1508,17 +1508,15 @@ class _ProductDetailsState extends State<ProductDetails>
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
-          Container(
-            child: Padding(
-              padding: app_language_rtl.$!
-                  ? EdgeInsets.only(left: 8.0)
-                  : EdgeInsets.only(right: 8.0),
-              child: SizedBox(
-                width: 75,
-                child: Text(
-                  AppLocalizations.of(context)!.total_price_ucf,
-                  style: TextStyle(color: Color(0xff6B7377), fontSize: 10),
-                ),
+          Padding(
+            padding: app_language_rtl.$!
+                ? EdgeInsets.only(left: 8.0)
+                : EdgeInsets.only(right: 8.0),
+            child: SizedBox(
+              width: 75,
+              child: Text(
+                AppLocalizations.of(context)!.total_price_ucf,
+                style: TextStyle(color: Color(0xff6B7377), fontSize: 10),
               ),
             ),
           ),
@@ -1542,7 +1540,7 @@ class _ProductDetailsState extends State<ProductDetails>
     );
   }
 
-  Row buildQuantityRow() {
+  Widget buildQuantityRow() {
     return Row(
       children: [
         Padding(
@@ -1583,15 +1581,16 @@ class _ProductDetailsState extends State<ProductDetails>
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
             "$_stock_txt",
-            style: TextStyle(color: Color(0xff6B7377), fontSize: 14),
+            style: TextStyle(color: Color(0xff6B7377), fontSize: 13.0),
           ),
         ),
       ],
     );
   }
+
 
   TextEditingController quantityText = TextEditingController(text: "0");
 

@@ -7,7 +7,7 @@ class MyTheme {
   static Color mainColor = Color(0xffF2F1F6);
   static const Color accent_color = Color(0xFF33B7B1);
   // static const Color accent_color = Color(0xffE62E04);
-  static const Color accent_color_shadow = Color.fromRGBO(229, 65, 28, .40); // this color is a dropshadow of
+  static const Color accent_color_shadow = Color.fromRGBO(51 ,183, 177, .40); // this color is a dropshadow of
   static Color soft_accent_color = Color.fromRGBO(254, 234, 209, 1);
   static Color splash_screen_color = Color.fromRGBO(230, 46, 4, 1); // if not sure , use the same color as accent color
   /*configurable colors ends*/
@@ -24,10 +24,12 @@ class MyTheme {
   static const Color font_grey = Color.fromRGBO(107, 115, 119, 1);
   static const Color textfield_grey = Color.fromRGBO(209, 209, 209, 1);
   static const Color font_grey_Light = Color(0xff6B7377);
-  static Color golden = Color.fromRGBO(255, 168, 0, 1);
+  // static Color golden = Color(0xFF575757);
+  static Color golden = Color.fromRGBO(87,87, 87, 1);
   static Color amber = Color.fromRGBO(254, 234, 209, 1);
   static Color amber_medium = Color.fromRGBO(254, 240, 215, 1);
-  static Color golden_shadow = Color.fromRGBO(255, 168, 0, .4);
+  static Color golden_shadow = Color.fromRGBO(87,87, 87, .40);
+  // static Color golden_shadow = Color.fromRGBO(255, 168, 0, .4);
   static Color green = Colors.green;
   static Color? green_light = Colors.green[200];
   static Color shimmer_base = Colors.grey.shade50;
