@@ -30,7 +30,7 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget buildView(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: DeviceInfo(context).height,
       child: Stack(
         children: [
